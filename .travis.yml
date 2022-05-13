@@ -12,4 +12,4 @@ branches:
     - /^(cherry-pick-)?backport-\d+-to-/
     
 script:
-  - chmod u+x fetch_terraform.sh
+  - chmod +x fetch_terraform.sh
