@@ -17,5 +17,5 @@ branches:
  env:
   - tf_version=0.13.2 tf_init_cli_options="-input=false" tf_validation_cli_options=""
 
-before_install:
+script:
   - chmod u+x fetch_terraform.sh
