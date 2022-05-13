@@ -2,9 +2,6 @@ dist: focal
 language: bash
 virt: edge 
 
-git:
-  depth: 3
-
 addons:
   apt:
     packages: ['moreutils']
@@ -14,8 +11,5 @@ branches:
     - master
     - /^(cherry-pick-)?backport-\d+-to-/
     
- env:
-  - tf_version=0.13.2 tf_init_cli_options="-input=false" tf_validation_cli_options=""
-
 script:
   - chmod u+x fetch_terraform.sh
