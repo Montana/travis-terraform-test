@@ -1,0 +1,25 @@
+dist: focal
+language: bash
+virt: edge 
+
+git:
+  depth: 3
+
+addons:
+  apt:
+    packages: ['moreutils']
+
+branches:
+  only:
+    - master
+    - /^(cherry-pick-)?backport-\d+-to-/
+    
+ env:
+  - tf_version=0.13.2 tf_init_cli_options="-input=false" tf_validation_cli_options=""
+
+before_install:
+  - chmod u+x terraform_fetch.sh
+  - export PATH=$(echo $PATH | tr ':' "\n" | sed '/\/opt\/terraform/d' | tr "\n" ":" | sed "s|::|:|g")
+  - exec > >(ts -s '%H:%M:%.S ') 2>&1
+  - RANGE1=`echo "$TRAVIS_COMMIT_RANGE" | awk '{n=split($1,a,".");print a[1]}'`
+  - terraform init
